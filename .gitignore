@@ -7,3 +7,10 @@ target/roadWatch-1.0-SNAPSHOT/META-INF/
 projectFilesBackup/
 
 
+target/roadWatch-1.0-SNAPSHOT.war
+target/maven-archiver/pom.properties
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/model/NotificationModel.class
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/model/TweetModel.class
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/DummyTest2.class
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/GoogleMapsClass.class
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/TwitterClass.class
