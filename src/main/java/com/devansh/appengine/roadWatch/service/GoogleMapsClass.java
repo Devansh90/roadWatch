@@ -14,8 +14,6 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-//import com.google.appengine.repackaged.org.codehaus.jackson.map.ObjectMapper;
-
 /*
 Task : Single point of contact to Google API
  */
@@ -61,7 +59,7 @@ public class GoogleMapsClass {
             try {
                 HttpEntity entity = response.getEntity();
                 responseString = EntityUtils.toString(entity, "UTF-8");
-//                log.info("Got response from Google: " + responseString);
+                //log.info("Got response from Google: " + responseString);
             } catch (Exception e) {
                 log.severe("Exception in googleCall" + e.getMessage());
                 e.printStackTrace();

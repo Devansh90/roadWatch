@@ -14,3 +14,5 @@ target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/mo
 target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/DummyTest2.class
 target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/GoogleMapsClass.class
 target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/service/TwitterClass.class
+target/maven-archiver/
+target/roadWatch-1.0-SNAPSHOT/WEB-INF/classes/com/devansh/appengine/roadWatch/model/

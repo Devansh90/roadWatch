@@ -31,13 +31,13 @@ public class Notifier {
             DateTime currentDateTime = new DateTime().withZone(istTimeZone);
 
             int hourOfDay = currentDateTime.getHourOfDay();
-           //TODO int minute = currentDateTime.getMinuteOfDay();
+            //TODO int minute = currentDateTime.getMinuteOfDay();
 
             int minute = currentDateTime.getSecondOfDay();
 
             log.info("Time is :" + currentDateTime);
             for (NotificationModel notificationModel : notificationModelArrayList) {
-                if (notificationModel.getStartHour() <= hourOfDay &&  hourOfDay < notificationModel.getStopHour()) {
+                if (notificationModel.getStartHour() <= hourOfDay && hourOfDay < notificationModel.getStopHour()) {
                     if (minute % notificationModel.getFrequencyInMins() == 0) {
                         log.info("Time to execute tweet:" + notificationModel.getTweetModel()
                                                                              .getName());
@@ -52,10 +52,11 @@ public class Notifier {
                             //Select random 2 images from media set
                             List<Integer> mediasToUse = fetchMedia(tweetModel.getMediaList());
 
-                            twitterClass.statusUpdate(tweetModel.getTweetText(notificationModel.getSpeed(googleResponse)) + counter,null,null);
-//                            twitterClass.statusUpdate(tweetModel.getTweetText(), tweetModel.getMediaList()
-//                                                                                           .get(mediasToUse.get(0)), tweetModel.getMediaList()
-//                                                                                                                               .get(mediasToUse.get(1)));
+                            twitterClass.statusUpdate(tweetModel.getTweetText(notificationModel.getSpeed(googleResponse)) + counter, null, null);
+                            //                            twitterClass.statusUpdate(tweetModel.getTweetText(notificationModel.getSpeed(googleResponse)), tweetModel.getMediaList()
+                            //                                                                                           .get(mediasToUse.get(0)), tweetModel.getMediaList()
+                            //                                                                                                                               .get(mediasToUse.get
+                            // (1)));
                         }
 
                     }
@@ -64,20 +65,6 @@ public class Notifier {
         } else {
             log.info("Code disabled as of now!");
         }
-    }
-
-    private List<Integer> fetchMedia(final List<Long> mediaList) {
-        Random r = new Random();
-        int low = 0;
-        int high = mediaList.size();
-        int result = r.nextInt(high - low) + low;
-        int result2 = r.nextInt(high - low) + low;
-        while (result2 == result) {
-            result2 = r.nextInt(high - low) + low;
-        }
-        log.info("Values selected are " + result + " and " + result2);
-        return Arrays.asList(result, result2);
-
     }
 
     private static ArrayList<NotificationModel> generateNotificationModelArray() {
@@ -109,6 +96,20 @@ public class Notifier {
         arrayList.add(notificationModel);
 
         return arrayList;
+    }
+
+    private List<Integer> fetchMedia(final List<Long> mediaList) {
+        Random r = new Random();
+        int low = 0;
+        int high = mediaList.size();
+        int result = r.nextInt(high - low) + low;
+        int result2 = r.nextInt(high - low) + low;
+        while (result2 == result) {
+            result2 = r.nextInt(high - low) + low;
+        }
+        log.info("Values selected are " + result + " and " + result2);
+        return Arrays.asList(result, result2);
+
     }
 
     public void stopCode(final PrintWriter writer) {
