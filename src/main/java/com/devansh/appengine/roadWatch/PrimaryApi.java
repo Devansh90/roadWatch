@@ -1,6 +1,6 @@
 package com.devansh.appengine.roadWatch;
 
-import com.devansh.appengine.roadWatch.service.DummyTest2;
+import com.devansh.appengine.roadWatch.service.Notifier;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ public class PrimaryApi
 
     private final static Logger log = Logger.getLogger(PrimaryApi.class.getName());
 
-    private DummyTest2 dummyTest = new DummyTest2();
+    private Notifier dummyTest = new Notifier();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -36,17 +36,16 @@ public class PrimaryApi
         restartServer(resp, dummyTest);
     }
 
-    private void stopServer(final HttpServletResponse resp, final DummyTest2 dummyTest) {
+    private void stopServer(final HttpServletResponse resp, final Notifier dummyTest) {
         try {
             dummyTest.stopCode(resp.getWriter());
             log.info("Stop code executed!");
-//            throw new InterruptedException();
         } catch (Exception e) {
             log.severe("Error in Stop thread:" + e.getMessage());
         }
     }
 
-    private void restartServer(final HttpServletResponse resp, final DummyTest2 dummyTest) {
+    private void restartServer(final HttpServletResponse resp, final Notifier dummyTest) {
         try {
             dummyTest.restartCode(resp.getWriter());
             log.info("Restart code executed!");
@@ -55,8 +54,11 @@ public class PrimaryApi
         }
     }
 
-    private void runServer(HttpServletResponse resp, final DummyTest2 dummyTest) throws IOException {
-//        dummyTest.runCode(resp.getWriter());
+    private void runServer(HttpServletResponse resp, final Notifier dummyTest) throws IOException {
+        //TODO Use below
+        //dummyTest.runCode(resp.getWriter());
+
+        //TODO Remove when going prod
         while (true) {
             try {
                 Thread.sleep(1000);

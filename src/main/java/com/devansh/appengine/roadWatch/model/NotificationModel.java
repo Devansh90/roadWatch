@@ -3,6 +3,7 @@ package com.devansh.appengine.roadWatch.model;
 import com.devansh.appengine.roadWatch.response.GoogleResponse;
 import lombok.Data;
 
+import java.text.DecimalFormat;
 import java.util.logging.Logger;
 
 @Data
@@ -35,7 +36,10 @@ public class NotificationModel {
 
         Double speedInKmPerHour = speedInMetrePerSec * 3.6;
         log.info("Speed derived:" + speedInKmPerHour);
-        return speedInKmPerHour;
+
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        return Double.valueOf(df.format(speedInKmPerHour));
     }
 
     public Boolean triggerTweet(GoogleResponse googleResponse) {

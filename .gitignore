@@ -1,0 +1,9 @@
+
+src/main/resources/
+src/test/
+target/generated-sources/
+target/roadWatch-1.0-SNAPSHOT/META-INF/
+.idea/
+projectFilesBackup/
+
+

@@ -15,7 +15,7 @@ public class TweetModel {
     private Double destinationLng;
     private List<Long> mediaList;
 
-    public String getTweetText() {
-        return (text + " " + mentions);
+    public String getTweetText(final Double speed) {
+        return (text + " speed is just" + speed + " km/hr!! " + mentions);
     }
 }
