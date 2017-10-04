@@ -99,7 +99,7 @@ public class Notifier {
     }
 
 
-    
+
     private List<Integer> fetchMedia(final List<Long> mediaList) {
         Random r = new Random();
         int low = 0;
