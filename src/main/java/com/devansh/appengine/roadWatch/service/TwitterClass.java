@@ -53,12 +53,12 @@ public class TwitterClass {
             }
 
             log.info("About to tweet:" + statusUpdate.toString());
-            try {
-                Status status = twitter.updateStatus(statusUpdate);
-                log.info("Successfully updated the status to [" + status.getText() + "].");
-            } catch (TwitterException e) {
-                log.severe("Twitter Exception in status Update: " + e.getMessage());
-            }
+//            try {
+//                Status status = twitter.updateStatus(statusUpdate);
+//                log.info("Successfully updated the status to [" + status.getText() + "].");
+//            } catch (TwitterException e) {
+//                log.severe("Twitter Exception in status Update: " + e.getMessage());
+//            }
         } catch (Exception e) {
             log.severe(" Exception in status Update" + e.getMessage());
         }

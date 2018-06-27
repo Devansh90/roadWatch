@@ -3,26 +3,26 @@ package com.devansh.appengine.roadWatch.service;
 import com.devansh.appengine.roadWatch.model.NotificationModel;
 import com.devansh.appengine.roadWatch.model.TweetModel;
 import com.devansh.appengine.roadWatch.response.GoogleResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Logger;
 
+@Slf4j
 public class Notifier {
-
-    private final static Logger log = Logger.getLogger(Notifier.class.getName());
 
     private static Boolean runFlag = true;
     private static Integer counter = 0;
     private GoogleMapsClass googleMapsClass = new GoogleMapsClass();
     private TwitterClass twitterClass = new TwitterClass();
 
-    public void runCode(final PrintWriter writer) {
+
+    public void runCode() {
+        log.info("Run flag is :" + runFlag);
         if (runFlag) {
 
             final ArrayList<NotificationModel> notificationModelArrayList = generateNotificationModelArray();
@@ -70,8 +70,8 @@ public class Notifier {
     private static ArrayList<NotificationModel> generateNotificationModelArray() {
 
         TweetModel towardsKrishviTweet = new TweetModel();
-        towardsKrishviTweet.setText("Why is everything so slow!");
-        towardsKrishviTweet.setMentions("@BlrRoadwatch");
+//        towardsKrishviTweet.setText("Why is everything so slow!");
+//        towardsKrishviTweet.setMentions("@BlrRoadwatch");
 
         //12.940680, 77.696211
         towardsKrishviTweet.setOriginLat(12.940680);
@@ -86,8 +86,8 @@ public class Notifier {
         towardsKrishviTweet.setMediaList(mediaList);
 
         NotificationModel notificationModel = new NotificationModel();
-        notificationModel.setStartHour(14);
-        notificationModel.setStopHour(15);
+        notificationModel.setStartHour(04);
+        notificationModel.setStopHour(23);
         notificationModel.setTweetModel(towardsKrishviTweet);
         notificationModel.setFrequencyInMins(10);
         notificationModel.setTresholdSpeedInKmPerHour(150.00D);
@@ -114,15 +114,13 @@ public class Notifier {
 
     }
 
-    public void stopCode(final PrintWriter writer) {
+    public void stopCode() {
         runFlag = false;
         log.info("Code stopped at time:" + counter);
-        writer.println("Code stopped at time:" + counter);
     }
 
-    public void restartCode(final PrintWriter writer) {
+    public void restartCode() {
         runFlag = true;
         log.info("Code restarted at counter:" + counter);
-        writer.println("Code restarted at counter:" + counter);
     }
 }

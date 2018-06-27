@@ -8,13 +8,20 @@ import java.util.logging.Logger;
 
 @Data
 public class NotificationModel {
+    private final static Logger log = Logger.getLogger(NotificationModel.class.getName());
     private TweetModel tweetModel;
     private Integer startHour;
     private Integer stopHour;
     private Integer frequencyInMins;
     private Double tresholdSpeedInKmPerHour;
 
-    private final static Logger log = Logger.getLogger(NotificationModel.class.getName());
+    public Boolean triggerTweet(GoogleResponse googleResponse) {
+        Double speedOfCar = getSpeed(googleResponse);
+        if (speedOfCar != null) {
+            if (speedOfCar < tresholdSpeedInKmPerHour) return true;
+        }
+        return false;
+    }
 
     public Double getSpeed(GoogleResponse googleResponse) {
         if (googleResponse == null || googleResponse.getRoutes() == null || googleResponse.getRoutes()
@@ -40,13 +47,5 @@ public class NotificationModel {
         DecimalFormat df = new DecimalFormat("0.00");
 
         return Double.valueOf(df.format(speedInKmPerHour));
-    }
-
-    public Boolean triggerTweet(GoogleResponse googleResponse) {
-        Double speedOfCar = getSpeed(googleResponse);
-        if (speedOfCar != null) {
-            if (speedOfCar < tresholdSpeedInKmPerHour) return true;
-        }
-        return false;
     }
 }
