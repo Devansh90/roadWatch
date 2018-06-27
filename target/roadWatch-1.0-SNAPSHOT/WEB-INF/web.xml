@@ -64,5 +64,32 @@
         <!--<welcome-file>fileUpload.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 
+    <servlet>
+        <servlet-name>AppStart</servlet-name>
+        <servlet-class>com.devansh.appengine.roadWatch.resource.AppStarter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AppStart</servlet-name>
+        <url-pattern>/app/start</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AppStop</servlet-name>
+        <servlet-class>com.devansh.appengine.roadWatch.resource.AppStopper</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AppStop</servlet-name>
+        <url-pattern>/app/stop</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BootupServer</servlet-name>
+        <servlet-class>com.devansh.appengine.roadWatch.BootupServer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BootupServer</servlet-name>
+        <url-pattern>/app/bootup</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 
